@@ -1,0 +1,158 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - '3000:3000'
+
+    depends_on:
+      - backend
+    networks:
+      - dating
+    volumes:
+      - ./frontend/.output/public:/app/.output/public
+    environment:
+      - API_URL=http://backend:5000
+      - NODE_ENV=development
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - '5000:5000'
+    networks:
+      - dating
+
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/dating_app
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:14
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=dating_app
+    networks:
+      - dating
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - '8082:8080'
+    networks:
+      - dating
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  pgweb:
+    image: sosedoff/pgweb
+    ports:
+      - '8083:8081'
+    environment:
+      - PGWEB_DATABASE_URL=postgres://postgres:postgres@postgres:5432/dating_app?sslmode=disable
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - dating
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - '9090:9090'
+    networks:
+      - dating
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - '3001:3000'
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+    depends_on:
+      - prometheus
+    networks:
+      - dating
+
+  node-exporter:
+    image: prom/node-exporter
+    container_name: node-exporter
+    restart: always
+    ports:
+      - '9100:9100'
+    networks:
+      - dating
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - '8088:8080'
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    networks:
+      - dating
+    restart: always
+
+  mailpit:
+    image: axllent/mailpit
+    ports:
+      - '8025:8025'
+    networks:
+      - dating
+
+  redis:
+    image: redis:alpine
+    ports:
+      - '6379:6379'
+    networks:
+      - dating
+  redis-commander:
+    image: rediscommander/redis-commander
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - '8087:8081'
+    depends_on:
+      - redis
+    networks:
+      - dating
+
+volumes:
+  postgres_data:
+  grafana_data:
+
+networks:
+  dating:
+    driver: bridge
