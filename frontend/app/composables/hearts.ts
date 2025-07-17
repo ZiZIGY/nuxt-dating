@@ -106,7 +106,7 @@ export function useExplodingHearts(
       : ['oklch(0.645 0.246 16.439)'];
   });
 
-  const hearts = shallowRef<Heart[]>([]);
+  let hearts: Heart[] = [];
   const ctx = shallowRef<CanvasRenderingContext2D | null>(null);
 
   const { play: playSound } = useSound('/sounds/bubblepop.mp3');
@@ -123,7 +123,7 @@ export function useExplodingHearts(
   );
 
   const generateHeart = () => {
-    if (!canvasRef.value || hearts.value.length >= maxHearts) return;
+    if (!canvasRef.value || hearts.length >= maxHearts) return;
 
     const id = Date.now() + Math.random();
     const size = minHeartSize + Math.random() * (maxHeartSize - minHeartSize);
@@ -131,7 +131,7 @@ export function useExplodingHearts(
     const colorIndex = Math.floor(Math.random() * colorsList.length);
     const color = colorsList[colorIndex] || 'oklch(0.645 0.246 16.439)';
 
-    hearts.value.push({
+    hearts.push({
       id,
       x: Math.random() * canvasWidth,
       y: canvasHeight + size,
@@ -152,8 +152,8 @@ export function useExplodingHearts(
   };
 
   const checkHeartCollision = (x: number, y: number): Heart | null => {
-    for (let i = hearts.value.length - 1; i >= 0; i--) {
-      const heart = hearts.value[i];
+    for (let i = hearts.length - 1; i >= 0; i--) {
+      const heart = hearts[i];
       if (!heart || heart.isExploding) continue;
 
       const dx = heart.x - x;
@@ -281,7 +281,7 @@ export function useExplodingHearts(
 
       ctx.value.clearRect(0, 0, canvasWidth, canvasHeight);
 
-      hearts.value = hearts.value.filter((heart) => {
+      hearts = hearts.filter((heart) => {
         if (heart.isExploding) {
           heart.fragments = heart.fragments.filter((fragment) => {
             fragment.x += fragment.velocity.x * deltaTime;
@@ -331,16 +331,12 @@ export function useExplodingHearts(
     if (canvasRef.value) {
       ctx.value = canvasRef.value.getContext('2d');
       resizeCanvas();
-
-      window.addEventListener('resize', resizeCanvas);
       resume();
     }
   });
 
-  onBeforeUnmount(() => {
-    pause();
-    window.removeEventListener('resize', resizeCanvas);
-  });
+  onBeforeUnmount(pause);
+  useEventListener(window, 'resize', resizeCanvas);
 
   return {
     hearts,

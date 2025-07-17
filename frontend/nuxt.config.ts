@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/color-mode',
     '@vueuse/sound/nuxt',
+    '@nuxtjs/i18n',
   ],
 
   // Настройка для Docker
@@ -37,6 +38,11 @@ export default defineNuxtConfig({
     componentDir: './app/components/ui',
   },
 
+  colorMode: {
+    classSuffix: '',
+    preference: 'system',
+  },
+
   sound: {
     sounds: {
       scan: true,
@@ -47,6 +53,22 @@ export default defineNuxtConfig({
     serverBundle: {
       collections: ['noto-v1'],
     },
+  },
+
+  i18n: {
+    defaultLocale: 'ru',
+    locales: [
+      {
+        code: 'ru',
+        name: 'Русский',
+        file: 'ru.json',
+      },
+      {
+        code: 'en',
+        name: 'English',
+        file: 'en.json',
+      },
+    ],
   },
 
   css: ['~/assets/css/tailwind.css'],

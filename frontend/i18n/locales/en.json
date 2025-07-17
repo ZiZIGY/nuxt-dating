@@ -1,0 +1,28 @@
+{
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "greeting": "Hello, {name}",
+    "logout": "Logout"
+  },
+  "hero": {
+    "title": {
+      "start": "Find your",
+      "highlight": "true love",
+      "end": "today"
+    },
+    "description": "A modern dating service that helps you find the perfect match based on your interests and preferences.",
+    "buttons": {
+      "start": "Start dating",
+      "learnMore": "Learn more"
+    },
+    "stats": {
+      "users": "Active users",
+      "success": "Successful matches",
+      "support": "Support"
+    },
+    "image": {
+      "alt": "Happy couple"
+    }
+  }
+}

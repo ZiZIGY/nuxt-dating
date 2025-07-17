@@ -67,9 +67,9 @@
   const decorDelays = [0.5, 0.7, 0.9, 1.1, 1.3];
 
   const stats = [
-    { number: '10K+', label: 'Активных пользователей' },
-    { number: '85%', label: 'Успешных знакомств' },
-    { number: '24/7', label: 'Поддержка' },
+    { number: '10K+', label: $t('hero.stats.users') },
+    { number: '85%', label: $t('hero.stats.success') },
+    { number: '24/7', label: $t('hero.stats.support') },
   ];
 </script>
 
@@ -94,59 +94,62 @@
         :animate="'visible'"
         class="grid gap-12 md:grid-cols-2 md:items-center"
       >
-        <!-- Левая колонка с текстом (с гласморфизмом) -->
         <motion.div
-          class="flex flex-col space-y-8 p-6 sm:p-8 rounded-xl bg-white/70 dark:bg-card/50 backdrop-blur-md border border-border/50 dark:border-white/10 shadow-lg"
+          class="flex flex-col space-y-8 p-6 sm:p-8 rounded-xl bg-white/70 dark:bg-background/40 backdrop-blur-md border border-border/50 dark:border-border/30 shadow-lg"
           :variants="itemVariants"
         >
           <motion.h1
             :variants="itemVariants"
             class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-foreground"
           >
-            Найдите свою <span class="text-primary">настоящую любовь</span> уже
-            сегодня
+            {{ $t('hero.title.start') }}
+            <span class="text-primary">{{ $t('hero.title.highlight') }}</span>
+            {{ $t('hero.title.end') }}
           </motion.h1>
 
           <motion.p
             :variants="itemVariants"
             class="text-xl text-muted-foreground max-w-md"
           >
-            Современный сервис знакомств, который помогает найти идеальную пару
-            на основе ваших интересов и предпочтений.
+            {{ $t('hero.description') }}
           </motion.p>
 
           <motion.div
             :variants="itemVariants"
             class="flex flex-wrap gap-4"
           >
-            <UiButton size="lg">Начать знакомиться</UiButton>
+            <UiButton size="lg">{{ $t('hero.buttons.start') }}</UiButton>
             <UiButton
               size="lg"
               variant="outline"
             >
-              Узнать больше
+              {{ $t('hero.buttons.learnMore') }}
             </UiButton>
           </motion.div>
 
           <motion.div
             :variants="itemVariants"
-            class="grid grid-cols-3 gap-4 pt-8 border-t border-border/40"
+            class="space-y-8"
           >
-            <div
-              v-for="(stat, index) in stats"
-              :key="index"
-              class="text-center"
-            >
-              <motion.div
-                :initial="{ scale: 0.8, opacity: 0 }"
-                :animate="{ scale: 1, opacity: 1 }"
-                :transition="{ delay: 0.5 + index * 0.1, type: 'spring' }"
+            <UiSeparator class="my-2" />
+
+            <div class="grid grid-cols-3 gap-4">
+              <div
+                v-for="(stat, index) in stats"
+                :key="index"
+                class="text-center"
               >
-                <h3 class="text-2xl font-bold text-primary">
-                  {{ stat.number }}
-                </h3>
-                <p class="text-sm text-muted-foreground">{{ stat.label }}</p>
-              </motion.div>
+                <motion.div
+                  :initial="{ scale: 0.8, opacity: 0 }"
+                  :animate="{ scale: 1, opacity: 1 }"
+                  :transition="{ delay: 0.5 + index * 0.1, type: 'spring' }"
+                >
+                  <h3 class="text-2xl font-bold text-primary">
+                    {{ stat.number }}
+                  </h3>
+                  <p class="text-sm text-muted-foreground">{{ stat.label }}</p>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </motion.div>
@@ -160,7 +163,7 @@
           >
             <div class="overflow-hidden rounded-full aspect-square">
               <img
-                alt="Счастливая пара"
+                :alt="$t('hero.image.alt')"
                 class="relative z-10 shadow-xl object-cover size-full"
                 src="/images/hero-image.webp"
               />
