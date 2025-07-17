@@ -1,37 +1,37 @@
 version: '3.8'
 
 services:
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #   ports:
-  #     - '3000:3000'
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - '3000:3000'
 
-  #   depends_on:
-  #     - backend
-  #   networks:
-  #     - dating
-  #   volumes:
-  #     - ./frontend/.output/public:/app/.output/public
-  #   environment:
-  #     - API_URL=http://backend:5000
-  #     - NODE_ENV=development
+    depends_on:
+      - backend
+    networks:
+      - dating
+    volumes:
+      - ./frontend/.output/public:/app/.output/public
+    environment:
+      - API_URL=http://backend:5000
+      - NODE_ENV=development
 
-  # backend:
-  #   build:
-  #     context: ./backend
-  #   ports:
-  #     - '5000:5000'
-  #   networks:
-  #     - dating
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - '5000:5000'
+    networks:
+      - dating
 
-  #   environment:
-  #     - NODE_ENV=development
-  #     - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/dating_app
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/dating_app
 
-  #   depends_on:
-  #     postgres:
-  #       condition: service_healthy
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   postgres:
     image: postgres:14
