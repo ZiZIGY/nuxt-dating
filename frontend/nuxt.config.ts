@@ -41,6 +41,7 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: '',
     preference: 'system',
+    storage: 'cookie',
   },
 
   sound: {
@@ -62,11 +63,13 @@ export default defineNuxtConfig({
         code: 'ru',
         name: 'Русский',
         file: 'ru.json',
+        flag: '🇷🇺',
       },
       {
         code: 'en',
         name: 'English',
         file: 'en.json',
+        flag: '🇺🇸',
       },
     ],
   },

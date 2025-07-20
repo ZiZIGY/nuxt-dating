@@ -64,8 +64,6 @@
     } as VariantType,
   };
 
-  const decorDelays = [0.5, 0.7, 0.9, 1.1, 1.3];
-
   const stats = [
     { number: '10K+', label: $t('hero.stats.users') },
     { number: '85%', label: $t('hero.stats.success') },
@@ -87,7 +85,9 @@
       />
     </ClientOnly>
 
-    <div class="container relative z-10 mx-auto px-4 md:px-6">
+    <div
+      class="container relative z-10 mx-auto px-4 md:px-6 pointer-events-none"
+    >
       <motion.div
         :variants="containerVariants"
         :initial="'hidden'"
@@ -95,7 +95,7 @@
         class="grid gap-12 md:grid-cols-2 md:items-center"
       >
         <motion.div
-          class="flex flex-col space-y-8 p-6 sm:p-8 rounded-xl bg-white/70 dark:bg-background/40 backdrop-blur-md border border-border/50 dark:border-border/30 shadow-lg"
+          class="flex flex-col space-y-8 p-6 sm:p-8 rounded-xl bg-white/70 dark:bg-background/40 backdrop-blur-md border border-border/50 dark:border-border/30 shadow-lg pointer-events-auto"
           :variants="itemVariants"
         >
           <motion.h1
@@ -156,7 +156,7 @@
 
         <motion.div
           :variants="imageVariants"
-          class="relative flex justify-center pointer-events-none"
+          class="relative flex justify-center"
         >
           <div
             class="relative h-[400px] w-[400px] rounded-full bg-muted/50 flex items-center justify-center"
@@ -171,23 +171,25 @@
 
             <!-- Декоративные элементы вокруг изображения с анимацией -->
             <motion.div
+              v-for="i in 3"
+              :key="i"
               :variants="decorVariants"
               :initial="'hidden'"
               :animate="'visible'"
-              :transition="{ delay: decorDelays[2] }"
+              :transition="{ delay: 0.5 }"
               class="absolute top-10 -left-6 h-12 w-12 rounded-full bg-primary"
             />
             <motion.div
               :initial="{ scale: 0, opacity: 0 }"
               :animate="{ scale: 1, opacity: 1 }"
-              :transition="{ delay: decorDelays[3], type: 'spring' }"
+              :transition="{ delay: 0.7, type: 'spring' }"
               :variants-animate="pulseVariants"
               class="absolute bottom-20 -right-8 h-16 w-16 rounded-full bg-secondary"
             />
             <motion.div
               :initial="{ scale: 0, opacity: 0 }"
               :animate="{ scale: 1, opacity: 1 }"
-              :transition="{ delay: decorDelays[4], type: 'spring' }"
+              :transition="{ delay: 0.9, type: 'spring' }"
               :variants-animate="pulseVariants"
               class="absolute -bottom-2 left-20 h-10 w-10 rounded-full bg-accent"
             />

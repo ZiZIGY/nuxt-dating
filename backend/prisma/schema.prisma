@@ -22,9 +22,43 @@ model User {
   
   bio           String?
   location      String?
+  
+  interests     UserInterest[]
 
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+}
+
+model Interest {
+  id          String   @id @default(uuid())
+  code        String   @unique
+  category    String
+  
+  emoji       String
+  
+  ru          String
+  en          String
+  
+  users       UserInterest[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([category])
+}
+
+model UserInterest {
+  id          String   @id @default(uuid())
+  userId      String
+  interestId  String
+  level       Int      @default(1)
+  
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  interest    Interest @relation(fields: [interestId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, interestId])
+  @@index([interestId])
+  @@index([userId])
 }
 
 enum Gender {

@@ -2,6 +2,9 @@
 
 <template>
   <main>
-    <SectionsHero />
+    <SectionHero />
+    <SectionHowItWorks />
+    <SectionServiceFeatures />
+    <SectionTestimonials />
   </main>
 </template>

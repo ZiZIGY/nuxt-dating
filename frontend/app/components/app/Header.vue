@@ -15,8 +15,7 @@
       </NuxtLink>
 
       <div class="flex items-center gap-4">
-        <WidgetExplodedHeartsCount />
-        <WidgetLanguageSwitcher />
+        <WidgetLocalization />
         <WidgetTheme />
       </div>
 

@@ -2,27 +2,85 @@
   "auth": {
     "login": "Login",
     "register": "Register",
-    "greeting": "Hello, {name}",
-    "logout": "Logout"
+    "logout": "Logout",
+    "greeting": "Hello"
   },
   "hero": {
     "title": {
-      "start": "Find your",
-      "highlight": "true love",
+      "start": "Find your ",
+      "highlight": "love ",
       "end": "today"
     },
-    "description": "A modern dating service that helps you find the perfect match based on your interests and preferences.",
+    "description": "A modern dating app that helps you find true love and build strong relationships.",
     "buttons": {
-      "start": "Start dating",
-      "learnMore": "Learn more"
+      "start": "Get Started",
+      "learnMore": "Learn More"
     },
     "stats": {
-      "users": "Active users",
-      "success": "Successful matches",
-      "support": "Support"
+      "users": "users",
+      "success": "successful matches",
+      "support": "support"
     },
     "image": {
       "alt": "Happy couple"
     }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "description": "A simple way to meet interesting people and find your perfect match",
+    "steps": {
+      "register": {
+        "title": "Create Profile",
+        "description": "Sign up and complete your profile by adding photos and information about yourself"
+      },
+      "match": {
+        "title": "Find Matches",
+        "description": "Our algorithm will find the most suitable matches based on your interests"
+      },
+      "chat": {
+        "title": "Start Chatting",
+        "description": "Begin conversations with people you like and get to know each other better"
+      },
+      "date": {
+        "title": "Meet Up",
+        "description": "Arrange a date and meet in real life"
+      }
+    }
+  },
+  "serviceFeatures": {
+    "title": "Why Choose Us",
+    "description": "We've created a service that makes dating pleasant and safe"
+  },
+  "testimonials": {
+    "title": "Success Stories",
+    "description": "Discover what users who found their love through our app have to say",
+    "readMore": "Read More Stories",
+    "items": [
+      {
+        "id": 1,
+        "name": "Maria and Dmitry",
+        "photo": "/images/testimonial-1.webp",
+        "text": "We met here 2 years ago and now we are married! This app completely changed our lives. Thank you for helping us find each other.",
+        "rating": 5
+      },
+      {
+        "id": 2,
+        "name": "Olga",
+        "photo": "/images/testimonial-2.webp",
+        "text": "After several unsuccessful attempts on other dating sites, I decided to try this app. Within a week, I met my current boyfriend!",
+        "rating": 5
+      },
+      {
+        "id": 3,
+        "name": "Sergey",
+        "photo": "/images/testimonial-3.webp",
+        "text": "Very user-friendly interface and a truly effective matching algorithm. I found many interesting people and new friends.",
+        "rating": 4
+      }
+    ]
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark"
   }
 }
