@@ -1,39 +1,17 @@
 <script setup lang="ts">
   import { motion } from 'motion-v';
 
-  // Данные для секции "Преимущества сервиса"
-  const features = [
-    {
-      id: 1,
-      title: 'Умный алгоритм',
-      description:
-        'Наш алгоритм подбирает людей с похожими интересами и ценностями',
-      icon: '🧠',
-      color: 'bg-blue-500/10 text-blue-500',
-    },
-    {
-      id: 2,
-      title: 'Безопасность',
-      description: 'Мы проверяем профили и защищаем ваши личные данные',
-      icon: '🔒',
-      color: 'bg-green-500/10 text-green-500',
-    },
-    {
-      id: 3,
-      title: 'Без спама',
-      description:
-        'Никаких ботов и фейковых аккаунтов благодаря строгой верификации',
-      icon: '✅',
-      color: 'bg-purple-500/10 text-purple-500',
-    },
-    {
-      id: 4,
-      title: 'Удобный интерфейс',
-      description: 'Интуитивно понятное приложение с современным дизайном',
-      icon: '✨',
-      color: 'bg-amber-500/10 text-amber-500',
-    },
-  ];
+  interface IFeature {
+    id: number;
+    title: string;
+    description: string;
+    icon: string;
+    color: string;
+  }
+
+  const features = computed(
+    () => $tm('serviceFeatures.features') as IFeature[]
+  );
 </script>
 
 <template>
@@ -75,19 +53,19 @@
             stiffness: 50,
             delay: 0.2 + index * 0.1,
           }"
-          :in-view-options="{ once: true, amount: 0.3 }"
+          :in-view-options="{ amount: 0.3, once: true }"
         >
           <div
             class="w-16 h-16 rounded-full flex items-center justify-center mb-4"
             :class="feature.color"
           >
-            <span class="text-3xl">{{ feature.icon }}</span>
+            <span class="text-3xl">{{ $rt(feature.icon) }}</span>
           </div>
           <h3 class="text-xl font-bold mb-2 text-foreground">
-            {{ feature.title }}
+            {{ $rt(feature.title) }}
           </h3>
           <p class="text-muted-foreground">
-            {{ feature.description }}
+            {{ $rt(feature.description) }}
           </p>
         </motion.div>
       </motion.div>

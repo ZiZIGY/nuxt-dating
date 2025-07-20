@@ -1,13 +1,6 @@
 <script setup lang="ts">
   import { motion } from 'motion-v';
-  import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-    type CarouselApi,
-  } from '@/components/ui/carousel';
+  import type { CarouselApi } from '@/components/ui/carousel';
 
   const api = ref<CarouselApi>();
 
@@ -49,13 +42,13 @@
       </div>
 
       <div class="relative mt-16 max-w-5xl mx-auto">
-        <Carousel
+        <UiCarousel
           class="w-full"
           :opts="{ loop: true, align: 'center' }"
           @init-api="setApi"
         >
-          <CarouselContent>
-            <CarouselItem
+          <UiCarouselContent>
+            <UiCarouselItem
               v-for="item in testimonials"
               :key="item.id"
             >
@@ -79,18 +72,7 @@
                 </div>
                 <div class="flex-grow text-center md:text-left">
                   <div class="flex justify-center md:justify-start mb-2">
-                    <Icon
-                      v-for="i in item.rating"
-                      :key="i"
-                      name="line-md:star-filled"
-                      class="text-primary size-5"
-                    />
-                    <Icon
-                      v-for="i in 5 - item.rating"
-                      :key="i + item.rating"
-                      name="line-md:star"
-                      class="text-muted size-5"
-                    />
+                    <WidgetRating :model-value="item.rating" />
                   </div>
                   <p class="text-lg text-foreground italic mb-4">
                     {{ $rt(item.text) }}
@@ -100,11 +82,11 @@
                   </p>
                 </div>
               </motion.div>
-            </CarouselItem>
-          </CarouselContent>
+            </UiCarouselItem>
+          </UiCarouselContent>
 
           <div class="flex justify-center items-center gap-4 mt-8">
-            <CarouselPrevious
+            <UiCarouselPrevious
               variant="outline"
               size="icon"
               class="static"
@@ -122,13 +104,13 @@
                 @click="api?.scrollTo(index)"
               />
             </div>
-            <CarouselNext
+            <UiCarouselNext
               variant="outline"
               size="icon"
               class="static"
             />
           </div>
-        </Carousel>
+        </UiCarousel>
       </div>
     </div>
   </section>
