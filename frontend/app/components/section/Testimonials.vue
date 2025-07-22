@@ -3,8 +3,27 @@
   import type { CarouselApi } from '@/components/ui/carousel';
 
   const api = ref<CarouselApi>();
+  const selectedIndex = ref(0);
+  const scrollSnaps = ref<number[]>([]);
 
-  const setApi = (carouselApi: CarouselApi) => (api.value = carouselApi);
+  const setApi = (carouselApi: CarouselApi) => {
+    if (!carouselApi) return;
+    api.value = carouselApi;
+    scrollSnaps.value = carouselApi.scrollSnapList();
+    selectedIndex.value = carouselApi.selectedScrollSnap();
+    carouselApi
+      .on('reInit', () => {
+        scrollSnaps.value = carouselApi.scrollSnapList();
+        selectedIndex.value = carouselApi.selectedScrollSnap();
+      })
+      .on('select', () => {
+        selectedIndex.value = carouselApi.selectedScrollSnap();
+      });
+  };
+
+  const onDotButtonClick = (index: number) => {
+    api.value?.scrollTo(index);
+  };
 
   interface ITestimonial {
     id: number;
@@ -44,7 +63,7 @@
       <div class="relative mt-16 max-w-5xl mx-auto">
         <UiCarousel
           class="w-full"
-          :opts="{ loop: true, align: 'center' }"
+          :opts="{ loop: true, align: 'start' }"
           @init-api="setApi"
         >
           <UiCarouselContent>
@@ -52,23 +71,19 @@
               v-for="item in testimonials"
               :key="item.id"
             >
-              <motion.div
+              <div
                 class="bg-card dark:bg-card/80 rounded-xl p-8 shadow-lg border border-border/50 dark:border-border/30 flex flex-col md:flex-row items-center gap-8 h-full select-none"
-                :initial="{ opacity: 0, y: 50 }"
-                :while-in-view="{ opacity: 1, y: 0 }"
-                :transition="{ delay: 0.2 }"
-                :in-view-options="{ amount: 0.3 }"
               >
                 <div class="flex-shrink-0">
-                  <div
-                    class="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/30"
-                  >
-                    <img
+                  <UiAvatar class="size-32 border-4 border-primary/30">
+                    <UiAvatarImage
                       :src="$rt(item.photo)"
                       :alt="$rt(item.name)"
-                      class="w-full h-full object-cover"
                     />
-                  </div>
+                    <UiAvatarFallback>
+                      {{ $rt(item.name).charAt(0) }}
+                    </UiAvatarFallback>
+                  </UiAvatar>
                 </div>
                 <div class="flex-grow text-center md:text-left">
                   <div class="flex justify-center md:justify-start mb-2">
@@ -81,36 +96,19 @@
                     {{ $rt(item.name) }}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             </UiCarouselItem>
           </UiCarouselContent>
-
-          <div class="flex justify-center items-center gap-4 mt-8">
-            <UiCarouselPrevious
-              variant="outline"
-              size="icon"
-              class="static"
-            />
-            <div class="flex gap-2">
-              <button
-                v-for="(_, index) in testimonials"
-                :key="index"
-                class="w-3 h-3 rounded-full transition-colors duration-300"
-                :class="
-                  api?.selectedScrollSnap() === index
-                    ? 'bg-primary'
-                    : 'bg-muted'
-                "
-                @click="api?.scrollTo(index)"
-              />
-            </div>
-            <UiCarouselNext
-              variant="outline"
-              size="icon"
-              class="static"
-            />
-          </div>
         </UiCarousel>
+        <div class="flex justify-center items-center gap-4 mt-8">
+          <button
+            v-for="(_, index) in scrollSnaps"
+            :key="index"
+            class="w-3 h-3 rounded-full transition-colors duration-300"
+            :class="selectedIndex === index ? 'bg-primary' : 'bg-muted'"
+            @click="onDotButtonClick(index)"
+          />
+        </div>
       </div>
     </div>
   </section>
