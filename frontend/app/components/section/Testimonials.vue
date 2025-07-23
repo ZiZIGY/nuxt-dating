@@ -58,6 +58,7 @@
               :initial="{ y: 50, opacity: 0 }"
               :while-in-view="{ y: 0, opacity: 1 }"
               :transition="{ type: 'spring', stiffness: 50 }"
+              :in-view-options="{ once: true, amount: 0.3 }"
               class="bg-card dark:bg-card/80 rounded-xl p-8 shadow-lg border border-border/50 dark:border-border/30 flex flex-col md:flex-row items-center gap-8 h-full select-none"
             >
               <div class="flex-shrink-0">
@@ -90,19 +91,19 @@
         <div class="flex justify-between items-center mt-1.5 flex-wrap">
           <ClientOnly>
             <WidgetCarouselNavigation :carousel-api="api" />
+            <div class="flex gap-3">
+              <UiCarouselPrevious
+                variant="outline"
+                size="icon"
+                class="relative inset-0 translate-0"
+              />
+              <UiCarouselNext
+                variant="outline"
+                size="icon"
+                class="relative inset-0 translate-0"
+              />
+            </div>
           </ClientOnly>
-          <div class="flex gap-3">
-            <UiCarouselPrevious
-              variant="outline"
-              size="icon"
-              class="relative inset-0 translate-0"
-            />
-            <UiCarouselNext
-              variant="outline"
-              size="icon"
-              class="relative inset-0 translate-0"
-            />
-          </div>
         </div>
       </UiCarousel>
     </div>

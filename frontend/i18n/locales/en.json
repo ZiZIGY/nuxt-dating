@@ -137,6 +137,31 @@
       }
     ]
   },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "questions": [
+      {
+        "question": "How to register?",
+        "answer": "To register, click on the 'Register' button in the top right corner and follow the instructions."
+      },
+      {
+        "question": "How to find matches?",
+        "answer": "Our algorithm will find the most suitable matches based on your interests."
+      },
+      {
+        "question": "How to contact support?",
+        "answer": "You can contact our support through the feedback form on the 'Contact' page."
+      },
+      {
+        "question": "How to change my profile picture?",
+        "answer": "Go to your profile settings and click on 'Change Profile Picture'."
+      },
+      {
+        "question": "How to delete my account?",
+        "answer": "You can delete your account in the account settings section."
+      }
+    ]
+  },
   "theme": {
     "light": "Light",
     "dark": "Dark"

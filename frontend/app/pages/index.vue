@@ -6,5 +6,6 @@
     <SectionHowItWorks />
     <SectionServiceFeatures />
     <SectionTestimonials />
+    <SectionFAQ />
   </main>
 </template>

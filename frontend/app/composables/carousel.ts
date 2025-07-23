@@ -13,7 +13,6 @@ export function useCarouselNavigation(carouselApi: CarouselApi) {
 
   onMounted(() => {
     if (!carouselApi) return;
-    console.log(carouselApi);
     updateNavigation();
     carouselApi.on('reInit', updateNavigation).on('select', updateNavigation);
   });
