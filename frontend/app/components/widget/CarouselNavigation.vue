@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import { motion } from 'motion-v';
   import type { CarouselApi } from '@/components/ui/carousel';
 
   const props = defineProps<{ carouselApi: CarouselApi }>();
@@ -16,9 +17,11 @@
       :is-selected="selectedIndex === index"
       :navigate="() => navigateTo(index)"
     >
-      <button
+      <motion.button
         class="w-3 h-3 rounded-full transition-colors duration-300"
-        :class="selectedIndex === index ? 'bg-primary' : 'bg-muted'"
+        :class="selectedIndex === index ? 'bg-primary scale-110' : 'bg-muted'"
+        :animate="{ scale: selectedIndex === index ? 1.2 : 1, opacity: 1 }"
+        :transition="{ type: 'spring', stiffness: 300, damping: 20 }"
         @click="navigateTo(index)"
       />
     </slot>

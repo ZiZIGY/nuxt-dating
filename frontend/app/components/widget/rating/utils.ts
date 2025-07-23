@@ -1,7 +1,4 @@
 import { cva, type VariantProps } from 'class-variance-authority';
-
-export { default as Rating } from './Rating.vue';
-
 export const ratingVariants = cva('inline-flex items-center gap-1', {
   variants: {
     size: {

@@ -2,7 +2,7 @@
   import { ref, computed } from 'vue';
   import type { HTMLAttributes } from 'vue';
   import { cn } from '@/lib/utils';
-  import { type RatingVariants, ratingVariants } from '.';
+  import { type RatingVariants, ratingVariants } from './utils';
 
   interface Props {
     modelValue?: number;
