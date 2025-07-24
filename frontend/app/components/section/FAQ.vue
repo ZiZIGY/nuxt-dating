@@ -6,7 +6,7 @@
     answer: string;
   }
 
-  const faqQuestions = computed(() => $tm('faq.questions') as FAQQuestion[]);
+  const faqQuestions: FAQQuestion[] = $tm('faq.questions');
 </script>
 
 <template>
@@ -20,6 +20,7 @@
       >
         {{ $t('faq.title') }}
       </motion.h2>
+
       <UiAccordion
         type="single"
         collapsible
@@ -29,6 +30,7 @@
           v-for="(question, index) in faqQuestions"
           :key="index"
           :value="'item-' + index"
+          class="mb-0"
         >
           <motion.div
             :initial="{ y: 20, opacity: 0 }"

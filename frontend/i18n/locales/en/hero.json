@@ -1,0 +1,22 @@
+{
+  "hero": {
+    "title": {
+      "start": "Find your ",
+      "highlight": "love ",
+      "end": "today"
+    },
+    "description": "A modern dating app that helps you find true love and build strong relationships.",
+    "buttons": {
+      "start": "Get Started",
+      "learnMore": "Learn More"
+    },
+    "stats": {
+      "users": "users",
+      "success": "successful matches",
+      "support": "support"
+    },
+    "image": {
+      "alt": "Happy couple"
+    }
+  }
+} 

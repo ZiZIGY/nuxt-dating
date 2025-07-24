@@ -30,6 +30,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiUrl: process.env.API_URL || 'http://localhost:5000',
+      contactEmail: process.env.CONTACT_EMAIL || 'zizigydev@gmail.com',
     },
   },
 
@@ -62,13 +63,35 @@ export default defineNuxtConfig({
       {
         code: 'ru',
         name: 'Русский',
-        file: 'ru.json',
+        files: [
+          'ru/auth.json',
+          'ru/hero.json',
+          'ru/howItWorks.json',
+          'ru/serviceFeatures.json',
+          'ru/testimonials.json',
+          'ru/faq.json',
+          'ru/theme.json',
+          'ru/about.json',
+          'ru/privacy.json',
+          'ru/meta.json'
+        ],
         flag: '🇷🇺',
       },
       {
         code: 'en',
         name: 'English',
-        file: 'en.json',
+        files: [
+          'en/auth.json',
+          'en/hero.json',
+          'en/howItWorks.json',
+          'en/serviceFeatures.json',
+          'en/testimonials.json',
+          'en/faq.json',
+          'en/theme.json',
+          'en/about.json',
+          'en/privacy.json',
+          'en/meta.json'
+        ],
         flag: '🇺🇸',
       },
     ],

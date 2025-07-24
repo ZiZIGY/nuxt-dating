@@ -1,0 +1,36 @@
+{
+  "serviceFeatures": {
+    "title": "Why Choose Us",
+    "description": "We've created a service that makes dating pleasant and safe",
+    "features": [
+      {
+        "id": 1,
+        "title": "Smart Algorithm",
+        "description": "Our algorithm matches people with similar interests and values",
+        "icon": "🧠",
+        "color": "bg-blue-500/10 text-blue-500"
+      },
+      {
+        "id": 2,
+        "title": "Security",
+        "description": "We verify profiles and protect your personal data",
+        "icon": "🔒",
+        "color": "bg-green-500/10 text-green-500"
+      },
+      {
+        "id": 3,
+        "title": "No Spam",
+        "description": "No bots or fake accounts thanks to strict verification",
+        "icon": "✅",
+        "color": "bg-purple-500/10 text-purple-500"
+      },
+      {
+        "id": 4,
+        "title": "User-Friendly Interface",
+        "description": "Intuitive app with modern design",
+        "icon": "✨",
+        "color": "bg-amber-500/10 text-amber-500"
+      }
+    ]
+  }
+} 

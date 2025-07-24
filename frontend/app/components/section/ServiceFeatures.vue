@@ -9,9 +9,7 @@
     color: string;
   }
 
-  const features = computed(
-    () => $tm('serviceFeatures.features') as IFeature[]
-  );
+  const features: IFeature[] = $tm('serviceFeatures.features');
 </script>
 
 <template>

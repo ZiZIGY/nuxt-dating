@@ -17,13 +17,13 @@
     rating: number;
   }
 
-  const testimonials = computed(
-    () => $tm('testimonials.items') as ITestimonial[]
-  );
+  const testimonials: ITestimonial[] = $tm('testimonials.items');
 </script>
 
 <template>
-  <section class="bg-muted/30 dark:bg-muted/10 py-20 md:py-32 overflow-hidden">
+  <section
+    class="bg-muted/30 dark:bg-muted/10 py-20 md:py-32 overflow-hidden bg-[url(/images/decorations/bg.webp)] bg-cover bg-center"
+  >
     <div class="container mx-auto px-4 md:px-6">
       <div class="text-center mb-12">
         <motion.h2

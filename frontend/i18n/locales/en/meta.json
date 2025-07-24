@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "main": {
+      "title": "Vue Dating - A Modern Dating App",
+      "description": "Vue Dating is a modern dating app designed to help people find meaningful connections in a safe and enjoyable environment.",
+      "keywords": "dating, app, modern, safe, enjoyable environment",
+      "og": {
+        "title": "Vue Dating - A Modern Dating App",
+        "description": "Vue Dating is a modern dating app designed to help people find meaningful connections in a safe and enjoyable environment."
+      }
+    }
+  }
+}

@@ -2,6 +2,10 @@
 
 <template>
   <NuxtLayout>
+    <NuxtLoadingIndicator
+      :throttle="0"
+      class="bg-primary"
+    />
     <NuxtPage />
   </NuxtLayout>
 </template>

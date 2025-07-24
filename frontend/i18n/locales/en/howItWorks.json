@@ -1,0 +1,24 @@
+{
+  "howItWorks": {
+    "title": "How It Works",
+    "description": "A simple way to meet interesting people and find your perfect match",
+    "steps": {
+      "register": {
+        "title": "Create Profile",
+        "description": "Sign up and complete your profile by adding photos and information about yourself"
+      },
+      "match": {
+        "title": "Find Matches",
+        "description": "Our algorithm will find the most suitable matches based on your interests"
+      },
+      "chat": {
+        "title": "Start Chatting",
+        "description": "Begin conversations with people you like and get to know each other better"
+      },
+      "date": {
+        "title": "Meet Up",
+        "description": "Arrange a date and meet in real life"
+      }
+    }
+  }
+} 

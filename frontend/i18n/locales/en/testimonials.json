@@ -1,0 +1,58 @@
+{
+  "testimonials": {
+    "title": "Success Stories",
+    "description": "Discover what users who found their love through our app have to say",
+    "readMore": "Read More Stories",
+    "items": [
+      {
+        "id": 1,
+        "name": "Maria and Dmitry",
+        "photo": "/images/testimonials/1.png",
+        "text": "We met here 2 years ago and now we are married! This app completely changed our lives. Thank you for helping us find each other.",
+        "rating": 5
+      },
+      {
+        "id": 2,
+        "name": "Olga",
+        "photo": "/images/testimonials/2.png",
+        "text": "After several unsuccessful attempts on other dating sites, I decided to try this app. Within a week, I met my current boyfriend!",
+        "rating": 5
+      },
+      {
+        "id": 3,
+        "name": "Sergey",
+        "photo": "/images/testimonials/3.png",
+        "text": "Very user-friendly interface and a truly effective matching algorithm. I found many interesting people and new friends.",
+        "rating": 4
+      },
+      {
+        "id": 4,
+        "name": "Anna and Alex",
+        "photo": "/images/testimonials/4.png",
+        "text": "Thanks to this app, we found each other and are now planning our wedding. It's amazing how technology can bring people together.",
+        "rating": 5
+      },
+      {
+        "id": 5,
+        "name": "Nina",
+        "photo": "/images/testimonials/5.png",
+        "text": "I was skeptical at first, but this app really works. I've met so many wonderful people and made great friends.",
+        "rating": 4
+      },
+      {
+        "id": 6,
+        "name": "Igor and Elena",
+        "photo": "/images/testimonials/6.png",
+        "text": "We found each other on this app and have been inseparable ever since. It's a great platform for meeting genuine people.",
+        "rating": 5
+      },
+      {
+        "id": 7,
+        "name": "Victoria",
+        "photo": "/images/testimonials/7.png",
+        "text": "I never thought I'd find someone so perfect. This app made it possible, and I'm forever grateful.",
+        "rating": 5
+      }
+    ]
+  }
+}

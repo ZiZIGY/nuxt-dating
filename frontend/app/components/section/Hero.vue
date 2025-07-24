@@ -133,7 +133,7 @@
           >
             <UiSeparator class="my-2" />
 
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
               <div
                 v-for="(stat, index) in stats"
                 :key="index"
@@ -159,7 +159,7 @@
           class="relative flex justify-center"
         >
           <div
-            class="relative h-[400px] w-[400px] rounded-full bg-muted/50 flex items-center justify-center"
+            class="relative max-h-[400px] w-[100%] max-w-[400px] rounded-full bg-muted/50 flex items-center justify-center"
           >
             <div class="overflow-hidden rounded-full aspect-square">
               <img

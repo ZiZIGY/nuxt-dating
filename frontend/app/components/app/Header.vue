@@ -1,11 +1,20 @@
 <script setup lang="ts">
-  const isAuthenticated = false; // Временно, потом будет из стора
-  const { t } = useI18n();
+  import { motion } from 'motion-v';
+
+  const isAuthenticated = false;
 </script>
 
 <template>
-  <header class="w-full py-4 px-6 bg-background border-b border-border">
-    <div class="container mx-auto flex items-center justify-between">
+  <motion.header
+    class="w-full bg-background border-b border-border"
+    :initial="{ y: -100, opacity: 0 }"
+    :while-in-view="{ y: 0, opacity: 1 }"
+    :in-view-options="{ once: true, amount: 0, margin: '100px' }"
+    :transition="{ type: 'tween', duration: 0.5 }"
+  >
+    <div
+      class="container mx-auto flex items-center justify-between py-4 px-4 md:px-6"
+    >
       <NuxtLink
         to="/"
         class="flex items-center gap-2"
@@ -21,14 +30,14 @@
 
       <div class="flex items-center space-x-4">
         <template v-if="!isAuthenticated">
-          <UiButton variant="ghost">{{ t('auth.login') }}</UiButton>
-          <UiButton>{{ t('auth.register') }}</UiButton>
+          <UiButton variant="ghost">{{ $t('auth.login') }}</UiButton>
+          <UiButton>{{ $t('auth.register') }}</UiButton>
         </template>
         <template v-else>
           <div class="flex items-center space-x-3">
-            <span class="text-foreground">{{
-              t('auth.greeting', { name: 'Пользователь' })
-            }}</span>
+            <span class="text-foreground">
+              {{ $t('auth.greeting', { name: 'Пользователь' }) }}
+            </span>
             <div
               class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-accent-foreground"
             >
@@ -37,11 +46,11 @@
             <button
               class="text-sm text-muted-foreground hover:text-destructive transition-colors"
             >
-              {{ t('auth.logout') }}
+              {{ $t('auth.logout') }}
             </button>
           </div>
         </template>
       </div>
     </div>
-  </header>
+  </motion.header>
 </template>

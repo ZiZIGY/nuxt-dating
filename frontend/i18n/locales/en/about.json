@@ -1,0 +1,69 @@
+{
+  "about": {
+    "title": "About Us",
+    "intro": "Vue Dating is a modern dating app designed to help people find meaningful connections in a safe and enjoyable environment.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "Our mission is to create a platform where people can find genuine connections based on shared interests and values. We believe that meaningful relationships are built on compatibility and mutual respect."
+    },
+    "story": {
+      "title": "Our Story",
+      "description": "Vue Dating was founded in 2023 by a team of developers who were passionate about creating a better dating experience. We noticed that many dating apps were focused on superficial connections, so we decided to build something different - an app that prioritizes genuine relationships and user safety."
+    },
+    "values": {
+      "title": "Our Values",
+      "items": [
+        {
+          "title": "Safety",
+          "description": "We prioritize user safety with strict verification processes and privacy controls."
+        },
+        {
+          "title": "Authenticity",
+          "description": "We encourage genuine connections and honest interactions between users."
+        },
+        {
+          "title": "Inclusivity",
+          "description": "We welcome people of all backgrounds and identities on our platform."
+        },
+        {
+          "title": "Innovation",
+          "description": "We continuously improve our app with new features and technologies."
+        }
+      ]
+    },
+    "team": {
+      "title": "Our Team",
+      "members": [
+        {
+          "name": "Alex Johnson",
+          "position": "Founder & CEO",
+          "photo": "/images/team/alex.jpg",
+          "bio": "Alex has over 10 years of experience in software development and a passion for creating meaningful social platforms."
+        },
+        {
+          "name": "Sarah Chen",
+          "position": "CTO",
+          "photo": "/images/team/sarah.jpg",
+          "bio": "Sarah leads our technical team with her expertise in building scalable and secure applications."
+        },
+        {
+          "name": "Michael Rodriguez",
+          "position": "Head of Design",
+          "photo": "/images/team/michael.jpg",
+          "bio": "Michael ensures our app provides an intuitive and enjoyable user experience."
+        },
+        {
+          "name": "Emma Wilson",
+          "position": "Head of Marketing",
+          "photo": "/images/team/emma.jpg",
+          "bio": "Emma develops strategies to help people discover and enjoy our platform."
+        }
+      ]
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Have questions or feedback? We'd love to hear from you. Reach out to our team using the contact form or email us at",
+      "button": "Contact Us"
+    }
+  }
+}
